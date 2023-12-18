@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% block head_title %}{% trans "QRCREATE-Registration" %}{% endblock head_title %}
+{% block extra_head %}    
+<link rel="stylesheet" href="{% static 'css/registration.css' %}" />
+{% endblock %}
+<body>
+  {% block content %}
+  <header>
+    <a href="{% url 'home' %}" id="home">
+    <img src="{% static 'images/img1.png' %}" alt="" class="logo-image" />
+    </a>
+  </header>
+
+  <div class="container">
+    <div class="large-image">
+      <img src="{% static 'images/img2.png' %}" alt="" class="main-image" />
+    </div>
+
+    <div class="one">
+      <h1>Create account</h1>
+      <br />
+      <p><b>The world's leading QR code generator</b></p>
+
+      <br />
+
+      <br />
+
+      <form method="POST">
+        {% csrf_token %}
+        <p>Already have an account? <a href="{% url 'login' %}">Sign In</a> </p>
+        {% for field in form %}
+        <p>{{field.label_tag}}</p>
+        {{field}}
+        {% endfor %}
+        <!-- <label for="email">Email address</label>
+        <br /><input type="email" id="email" placeholder="sample@gmail.com" name="email"/>
+
+        <br />
+
+        <br />
+
+        <label for="password">Password</label>
+        <br /><input type="password" id="password" placeholder="Enter password here" name="password"/>
+
+        <br />
+
+        <br /> -->
+
+        <input type="submit" value="Register" class="btn1">
+      </form>
+
+      <br />
+
+      <br />
+
+      <p class="two"><small>or continue with</small></p>
+      <br />
+      <br />
+
+      <div class="three">
+        <a href="google.com"><button type="button" class="btn2">
+            <img src="{% static 'images/img4.png' %}" alt="" class="img3" />Sign up with Google
+          </button></a>
+
+        <a href="facebook.com"><button type="button" class="btn3">
+            <img src="{% static 'images/img3.png' %}" alt="" class="img2" />sign up with facebook
+          </button></a>
+      </div>
+    </div>
+  </div>
+  {% endblock content %}
+</body>
+
+</html>

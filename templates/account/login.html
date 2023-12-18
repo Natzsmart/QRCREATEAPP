@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% block head_title %}{% trans "QRCREATE-Login" %}{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}" />
+{% endblock %}
+
+<body>
+  {% block content %}
+
+  <main>
+    <div class="img">
+      <a href="{% url 'home' %}" id="home">
+      <img src="{% static 'images/image1.png' %}" height="35px" width="148px" />
+      </a>
+    </div>
+    <form method="POST">
+      {% csrf_token %}
+      <div class="input-details">
+        <img src="{% static 'images/image2.png' %}" height="500px" width="600px" alt="login.png" />
+        <div class="second-path">
+          <h4>Welcome Back</h4>
+          <p class="paragraph">Please sign into your account</p>
+          <p>Don't have an account?<a href="{% url 'signup' %}">Register</a></p>
+          <div class="e-mail">
+            <p>E-mail address</p>
+            <input
+              type="email"
+              id="email-address"
+              placeholder="sample@mail.com"
+              name="email"
+            />
+          </div>
+          <div class="password">
+            <p>Password</p>
+            <input
+              type="password"
+              id="input-password"
+              placeholder="Enter password here"
+              name="password"
+            />
+          </div>
+          <div class="forgot-pass">
+            <a href="#" target="_blank">Forgot password?</a>
+          </div>
+          <div>
+            <input type="submit" value="Log in" class="btn" />
+          </div>
+          <div>
+            <p class="continue">or continue with</p>
+          </div>
+          <div class="f-g">
+            <div>
+              <button class="google">
+                <div class="icon-first">
+                  <img
+                    src="{% static 'images/image3.png' %}"
+                    alt=""
+                    height="30px"
+                    width="30px"
+                    class="img-first"
+                  />
+                  <p class="google-sign">Sign in with Google</p>
+                </div>
+              </button>
+              <button class="facebook">
+                <div class="icon-second">
+                  <img
+                    src="{% static 'images/facebook.png' %}"
+                    alt=""
+                    height="30px"
+                    width="30px"
+                    class="img-second"
+                  />
+                  <p class="facebook-sign">Sign in with Facebook</p>
+                </div>
+              </buttton>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </main>
+  {% endblock content %}
+</body>
+
+</html>
