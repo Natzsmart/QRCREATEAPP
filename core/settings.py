@@ -22,15 +22,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-s4(qihpr@6b%9!fi)8_=eyc3&d7h61cwaw)ue_5amds)cnmw2i'
-#SECRET_KEY = os.environ.get("SECRET_KEY", "1773830202hfd")
+#SECRET_KEY = 'django-insecure-s4(qihpr@6b%9!fi)8_=eyc3&d7h61cwaw)ue_5amds)cnmw2i'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-#DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
-ALLOWED_HOSTS = ['*']
-#ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "localhost").split(" ")
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "localhost").split(" ")
 
 # RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 # if RENDER_EXTERNAL_HOSTNAME:
@@ -109,8 +107,10 @@ DATABASES = {
     ),
 }
 
-#database_url = os.environ.get('DATABASE_URL')
-DATABASES['default'] = dj_database_url.parse("postgres://natty_render_user:5nnQgVdsLafDS9d2oAdNHk9DdJtBt9L3@dpg-clvos8ug1b2c73cioc5g-a.oregon-postgres.render.com/natty_render")
+database_url = os.environ.get('DATABASE_URL')
+DATABASES['default'] = dj_database_url.parse(database_url)
+
+#postgres://natty_render_user:5nnQgVdsLafDS9d2oAdNHk9DdJtBt9L3@dpg-clvos8ug1b2c73cioc5g-a.oregon-postgres.render.com/natty_render
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
